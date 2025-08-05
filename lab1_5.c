@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>  // For malloc, free
 
 void findLeaders(int arr[], int n) {
     // The last element is always a leader
@@ -8,7 +9,8 @@ void findLeaders(int arr[], int n) {
     printf("%d ", max_from_right);
 
     // Traverse the array from second last element to the first element
-    for (int i = n - 2; i >= 0; i--) {
+    int i;  // Declare 'i' outside the loop for compatibility with older standards
+    for (i = n - 2; i >= 0; i--) {
         if (arr[i] > max_from_right) {
             printf("%d ", arr[i]);
             max_from_right = arr[i];  // Update the max_from_right
@@ -23,16 +25,26 @@ int main() {
     printf("Enter the size of array: ");
     scanf("%d", &size);
 
+    // Dynamically allocate memory for the array
+    int *arr = (int *)malloc(size * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
     // Input the array elements
-    int arr[size];
     printf("Enter array elements: ");
-    for (int i = 0; i < size; i++) {
+    int i;  // Declare 'i' outside the loop for compatibility
+    for (i = 0; i < size; i++) {
         scanf("%d", &arr[i]);
     }
 
     // Find and print the leader elements
     printf("Leader elements are: ");
     findLeaders(arr, size);
+
+    // Free dynamically allocated memory
+    free(arr);
 
     return 0;
 }
