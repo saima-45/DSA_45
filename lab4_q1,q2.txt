@@ -1,0 +1,15 @@
+//q1
+struct Node {
+    int data;
+    struct Node* next;
+};
+//q2
+struct Node* createNode(int value);
+struct Node* insertAtBeginning(struct Node* head, int value);
+struct Node* insertAtEnd(struct Node* head, int value);
+struct Node* insertAtPosition(struct Node* head, int value, int pos);
+struct Node* deleteFromBeginning(struct Node* head);
+struct Node* deleteFromEnd(struct Node* head);
+struct Node* deleteNode(struct Node* head, int value);
+int search(struct Node* head, int key);
+void display(struct Node* head);
